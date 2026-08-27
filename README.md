@@ -35,6 +35,12 @@ docker compose -f compose.prod.yml pull
 docker compose -f compose.prod.yml up -d
 ```
 
+## Logs to inspect
+
+- Backend logs: `docker compose --env-file .env -f compose.dev.yml logs api`
+- Reverse proxy logs: `docker compose --env-file .env -f compose.dev.yml logs caddy`
+- LiveKit logs: `docker compose --env-file .env -f compose.dev.yml logs livekit`
+
 ## Documentation
 
 - `docs/deploy-vps.md` — deployment checklist
