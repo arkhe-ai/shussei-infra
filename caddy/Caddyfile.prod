@@ -1,0 +1,7 @@
+app.shussei.example.com {
+  reverse_proxy web:3000
+}
+
+api.shussei.example.com {
+  reverse_proxy api:3001
+}

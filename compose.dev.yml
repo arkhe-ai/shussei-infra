@@ -62,3 +62,13 @@ services:
       - '3478:3478/tcp'
       - '3478:3478/udp'
       - '5349:5349/tcp'
+
+  caddy:
+    image: caddy:2
+    ports:
+      - '80:80'
+    volumes:
+      - ./caddy/Caddyfile.dev:/etc/caddy/Caddyfile:ro
+    depends_on:
+      - web
+      - api
