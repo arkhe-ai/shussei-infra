@@ -1,7 +1,18 @@
+{
+  debug
+}
+
 :80 {
-  handle_path /api/* {
-    reverse_proxy api:3001
+  @api path /api/*
+  reverse_proxy @api api:3001 {
+    header_up Host {host}
+    header_up X-Forwarded-Host {host}
+    header_up X-Forwarded-Proto {scheme}
   }
 
-  reverse_proxy web:3000
+  reverse_proxy web:3000 {
+    header_up Host web:3000
+    header_up X-Forwarded-Host {host}
+    header_up X-Forwarded-Proto {scheme}
+  }
 }
