@@ -10,6 +10,20 @@
     header_up X-Forwarded-Proto {scheme}
   }
 
+  @socketio path /socket.io/*
+  reverse_proxy @socketio api:3001 {
+    header_up Host {host}
+    header_up X-Forwarded-Host {host}
+    header_up X-Forwarded-Proto {scheme}
+  }
+
+  @rtc path /rtc/*
+  reverse_proxy @rtc livekit:7880 {
+    header_up Host {host}
+    header_up X-Forwarded-Host {host}
+    header_up X-Forwarded-Proto {scheme}
+  }
+
   reverse_proxy web:3000 {
     header_up Host web:3000
     header_up X-Forwarded-Host {host}
