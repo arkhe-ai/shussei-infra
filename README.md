@@ -29,7 +29,7 @@ Services:
 
 ## Production
 
-Use `compose.prod.yml` with registry images:
+Use `compose.prod.yml` with registry images. The API stores durable files in the host directory `./data/shussei-storage`, mounted as `/app/storage` inside the container. Keep this directory backed up; its contents are intentionally ignored by Git.
 ```bash
 docker compose -f compose.prod.yml pull
 docker compose -f compose.prod.yml up -d

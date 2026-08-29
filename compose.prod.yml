@@ -6,6 +6,8 @@ services:
   api:
     image: ghcr.io/arkhe-ai/shussei-api:latest
     env_file: .env
+    volumes:
+      - ./data/shussei-storage:/app/storage
 
   caddy:
     image: caddy:2
